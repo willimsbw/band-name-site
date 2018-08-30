@@ -1,6 +1,7 @@
 from database_setup import Base, Words
 from flask import Flask, redirect, render_template, request, url_for
 from sqlalchemy import create_engine
+from sqlalchemy.sql.expression import func, select
 from sqlalchemy.orm import sessionmaker
 import random, string
 
@@ -18,8 +19,10 @@ def generator():
         return render_template('homepage.html', first=first, second=second)
     if request.method == "POST":
         # Get random values and redirect with them as part of the query URL
-        first = "first"
-        second = "second"
+        first = session.query(Words).order_by(func.rand()).first
+        second = session.query(Words).order_by(func.rand()).first
+        while second == first:
+            second = session.query(Words).order_by(func.rand()).first
         return redirect(url_for("generator") + "?first=" + first + "&second=" + second, code=303)
 
 if __name__ == '__main__':

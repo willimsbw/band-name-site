@@ -8,11 +8,14 @@ Base = declarative_base()
 class Words(Base):
     __tablename__ = "words"
     word = Column(String(80), nullable = False)
+    id = Column(Integer, primary_key = True)
+
 
     @property
     def serialize(self):
         return {
             "word": self.word,
+            "id": self.id
         }
 
 #######   GOES AT END OF FILE   ###########

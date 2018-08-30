@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Words
+from database_setup import Words, Base
 
 engine = create_engine('sqlite:///words.db')
 # Bind the engine to the metadata of the Base class so that the

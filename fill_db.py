@@ -26,4 +26,4 @@ word1 = Words(word = "fox")
 session.add(word1)
 session.commit()
 
-print "added words!"
+print("added words!")

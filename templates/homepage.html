@@ -7,9 +7,11 @@
   <body>
 
     <section class="main">
+      {% if first != none %}
       <div class="band-name">
         <p>Your name is {{first}} {{second}}</p>
       </div>
+      {% endif %}
       <div class="button">
         <form method="POST">
           <button class="get-button" type="Submit">Get a name!</button>

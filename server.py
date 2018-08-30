@@ -24,7 +24,7 @@ def generator():
         # Get random values and redirect with them as part of the query URL
         # first =
         # second =
-        return redirect(url_for("generator") + "?first=" + first + "&second=" + second)
+        return redirect(url_for("generator") + "?first=" + first + "&second=" + second, code=303)
 
 if __name__ == '__main__':
     app.secret_key = 'pass'

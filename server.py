@@ -13,8 +13,6 @@ app = Flask(__name__)
 @app.route('/', methods=["POST", "GET"])
 def generator():
     if request.method == "GET":
-        # Show button with band name over it
-        # Get band name from URL and pass them to render template
         first = request.args.get('first')
         second = request.args.get('second')
         return render_template('homepage.html', first=first, second=second)

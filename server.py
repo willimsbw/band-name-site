@@ -19,10 +19,12 @@ def generator():
         return render_template('homepage.html', first=first, second=second)
     if request.method == "POST":
         # Get random values and redirect with them as part of the query URL
-        first = session.query(Words).order_by(func.rand()).first
-        second = session.query(Words).order_by(func.rand()).first
+        first = session.query(Words).order_by(func.random()).first().word
+        second = session.query(Words).order_by(func.random()).first().word
         while second == first:
-            second = session.query(Words).order_by(func.rand()).first
+            second = session.query(Words).order_by(func.random()).first().word
+        if random.randint(1, 20) == 1:
+            second = second + "!"
         return redirect(url_for("generator") + "?first=" + first + "&second=" + second, code=303)
 
 if __name__ == '__main__':

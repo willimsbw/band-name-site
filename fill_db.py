@@ -20,7 +20,7 @@ session = DBSession()
 
 
 
-#Adding words! for UrbanBurger
+#Adding words!
 word1 = Words(word = "Fox")
 session.add(word1)
 session.commit()
@@ -55,6 +55,26 @@ session.commit()
 
 word9 = Words(word = "Man")
 session.add(word9)
+session.commit()
+
+word10 = Words(word = "Sloth")
+session.add(word10)
+session.commit()
+
+word = Words(word = "Llama")
+session.add(word)
+session.commit()
+
+word = Words(word = "Archipelago")
+session.add(word)
+session.commit()
+
+word = Words(word = "Cat")
+session.add(word)
+session.commit()
+
+word = Words(word = "Pond")
+session.add(word)
 session.commit()
 
 print("added words!")

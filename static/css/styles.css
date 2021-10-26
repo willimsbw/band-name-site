@@ -1,0 +1,157 @@
+body {  
+  font-family: sans-serif;
+  margin: 0px;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.center {
+  flex-flow: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+
+.header-row {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(98, 98, 98);
+  width: 100%;
+  font-size: 40px;
+  box-shadow: 0 0 25px 0 black;
+}
+
+.header-entry {
+  align-self: stretch;
+  display: flex;
+  font-size: 2rem;
+  line-height: 1;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 50px 50px 50px 50px;
+  margin: 0px 30px 0px 0px;
+  border-radius: 5px;
+}
+
+.header-entry:hover {
+  background-color:white;
+  color: black;
+}
+
+.main {
+  vertical-align: middle;
+  flex-flow: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: 100%;
+}
+
+.band-name {
+  text-align: center;
+  width: 100%;
+}
+
+.band-name h1 {
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 75px;
+}
+
+.band-name h3 {
+  color: black;
+  font-size: 55px;
+}
+
+.remove_word_div {
+  text-align: center;
+  border: black;
+  border-style: solid;
+  margin: 5px;
+  padding: 10px 10px 10px 10px;
+  min-width: 100px;
+}
+
+
+.add-word-form {
+  width: 100%;
+  text-align: center;
+  margin: 50px 0px 50px 0px;
+  font-size: 40px;
+}
+
+.add-word-form input {
+  width: 60%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('../icons/add.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  background-size: 21px 21px;
+  margin: 5px 0px 0px 0px
+}
+
+.button {
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 70%;
+}
+
+.get-button {
+  background-color: rgb(52, 79, 153);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+}
+
+
+.delete-button {
+  background-color: rgb(228, 27, 13);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+font-size: 103%;
+}
+
+.submit-button {
+  background-color: rgb(52, 79, 153);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 10px 0px 0px 0px
+}

@@ -1,0 +1,35 @@
+{% extends 'basePage.html' %}
+{% block content %}
+{% if added_word != none %}
+<div class="add_success">
+  <h1>Sucesssfully added word: {{added_word}}</h1>
+</div>
+{% endif %}
+
+<section class="center, add-word-section">
+  <div class="main">
+    <div class="add-word-form">
+      <form action="{{ url_for('add_word') }}" method="POST">
+        <label for="word">Word to add:</label><br>
+        <input required type="text" id="word" name="word" placeholder="Add a word.."><br>
+        <button class="submit-button" type="Submit">Add Word!</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="center, remove-words-section">
+  <div class="main">
+    {% for word_object in word_objects %}
+    <div class="remove_word_div">
+      <p>{{word_object.word}}</p>
+      <form action="{{ url_for('remove_word') }}" method=post class=remove_word_form>
+        <input type="hidden" id="id_to_remove" name="id_to_remove" value="{{ word_object.id }}">
+        <button class="delete-button" type="Submit">Delete</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+

@@ -6,7 +6,7 @@ A simple tool that will generate you a super-hip band name!
   will only need to execute it again if you need to re-initialize the database
 * Launch the website by executing server.py
 * Press "Get a Name" to get an awesome indie band name
-* Use the "View and manage words in database" URL to see all of the current words in the database, delete any, and add additional words
+* Use the "Manage" page to see all of the current words in the database, delete any, and add additional words
 
 # Required Packages
 * SqlAlchemy

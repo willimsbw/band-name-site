@@ -110,3 +110,7 @@ venv.bak/
 
 #intellij stuff
 .idea
+
+# Build files
+flask_server/static/react
+flask_server/templates/index.html

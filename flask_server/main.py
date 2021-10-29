@@ -4,9 +4,9 @@ import database_methods
 
 app = Flask(__name__)
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["GET"])
 def serve_app():
-    return render_template('index.html', flask_token="Hellow World")
+    return render_template('index.html', flask_token="Hello World")
     
 
 

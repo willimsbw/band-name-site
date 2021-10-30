@@ -6,7 +6,9 @@ import NavBar from './NavBar'
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showManage: false }
+    this.state = { showManage: false };
+    this.toggleHomePage = this.toggleHomePage.bind(this);
+    this.toggleManagePage = this.toggleManagePage.bind(this);
   }
 
   toggleManagePage(e) {
@@ -21,27 +23,17 @@ class App extends React.Component {
     let body;
     if(this.state.showManage) {
       body = (
-        <div>
-          <h1>My State: {JSON.stringify(this.state)}</h1>
-          <h2>management page</h2>
-        </div>
-      )
+        <body className="App-body">
+          <div>
+            <h1>My State: {JSON.stringify(this.state)}</h1>
+            <h2>management page</h2>
+          </div>
+        </body>
+      );
     } else {
       body = (
         <body className="App-body">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <h1> Testing live rebuild </h1>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
           <h1>My State: {JSON.stringify(this.state)}</h1>
         </body>
       );
@@ -49,7 +41,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <header><NavBar onHomeClick={this.toggleHomePage.bind(this)} onManageClick={this.toggleManagePage.bind(this)} /></header>
+        <header><NavBar onHomeClick={this.toggleHomePage} onManageClick={this.toggleManagePage} /></header>
         {body}
       </div>
     );

@@ -29,7 +29,7 @@ class App extends React.Component {
         <body className="App-body">
           <div>
             <h2>management page</h2>
-            
+            <ManageWordsPage />
           </div>
         </body>
       );
@@ -37,7 +37,6 @@ class App extends React.Component {
       body = (
         <body className="App-body">
           <NameDisplayObject />
-          <ManageWordsPage />
         </body>
       );
     }

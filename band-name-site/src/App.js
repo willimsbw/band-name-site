@@ -28,7 +28,6 @@ class App extends React.Component {
       body = (
         <body className="App-body">
           <div>
-            <h2>management page</h2>
             <ManageWordsPage />
           </div>
         </body>
@@ -43,7 +42,13 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <header><NavBar onHomeClick={this.toggleHomePage} onManageClick={this.toggleManagePage} showManage={this.state.showManage} /></header>
+        <header>
+          <NavBar 
+            onHomeClick={this.toggleHomePage} 
+            onManageClick={this.toggleManagePage} 
+            showManage={this.state.showManage} 
+          />
+        </header>
         {body}
       </div>
     );

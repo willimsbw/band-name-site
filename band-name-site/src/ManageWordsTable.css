@@ -1,0 +1,9 @@
+.table-holder {
+    display: flex;
+    max-width: 100vw;
+    min-width: 42vw;
+}
+
+.table {
+    width: 100%;
+}

@@ -6,6 +6,8 @@ class Button extends React.Component {
         return <button onClick={this.props.onClick}> {this.props.text} </button>;
     }
 }
+
+Button.defaultProps = {text: "button"};
  
 Button.propTypes = {
     onClick: PropTypes.func.isRequired,

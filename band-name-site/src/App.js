@@ -42,14 +42,12 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <header>
+          {body}
           <NavBar 
             onHomeClick={this.toggleHomePage} 
             onManageClick={this.toggleManagePage} 
             showManage={this.state.showManage} 
           />
-        </header>
-        {body}
       </div>
     );
   }

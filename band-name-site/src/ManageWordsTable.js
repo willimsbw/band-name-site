@@ -3,17 +3,9 @@ import DeleteIcon from "@mui/icons-material/DeleteOutline"
 import "./ManageWordsTable.css";
 import React from 'react';
 
-const gridRowsProp = [
-  {id: 1, word: "Test1", firstAble: false, secondAble: true, categories: "metal, indie"},
-  {id: 2, word: "Test2", firstAble: false, secondAble: true, categories: "metal, indie"},
-  {id: 3, word: "Test3", firstAble: false, secondAble: true, categories: "metal, indie"},
-  {id: 4, word: "Test4", firstAble: false, secondAble: true, categories: "metal, indie"},
-  {id: 5, word: "Test5", firstAble: true, secondAble: true, categories: "metal, indie"},
-]
-
-export default function Table() {
+export default function Table(props) {
   const [editRowsModel, setEditRowsModel] = React.useState({});
-  const [rows, setRows] = React.useState(gridRowsProp)
+  const [rows, setRows] = React.useState(props.words);
 
 
   const handleDelete = React.useCallback(
@@ -26,11 +18,10 @@ export default function Table() {
 
   const columns = React.useMemo(
     () => [
-    {field: 'word', headerName: 'Word', flex: 0.2, type: 'string', editable: true},
-    {field: 'categories', headerName: 'Categories', flex: 0.4, type: 'string', editable: true},
-    {field: 'firstAble', headerName: 'Can be first', flex: 0.2, type: 'boolean', editable: true},
-    {field: 'secondAble', headerName: 'Can be second', flex: 0.2, type: 'boolean', editable: true},
-    {field: 'actions', type: 'actions', width: 80, getActions: (params) => [
+    {field: 'word', headerName: 'Word', flex: 0.3, type: 'string', editable: true},
+    {field: 'firstAble', headerName: 'Can be first', flex: 0.3, type: 'boolean', editable: true},
+    {field: 'secondAble', headerName: 'Can be second', flex: 0.3, type: 'boolean', editable: true},
+    {field: 'actions', type: 'actions', flex: .1, getActions: (params) => [
       <GridActionsCellItem icon={<DeleteIcon />} label="Delete" onClick={handleDelete(params.id)} />
     ]}
   ], [handleDelete]) 

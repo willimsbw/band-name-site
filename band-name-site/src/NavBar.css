@@ -1,28 +1,7 @@
-.header-row {
+.nav-row {
     display: flex;
     flex-direction: row;
     background-color: rgb(255, 255, 255);
     width: 100%;
     font-size: 1vw;
 }
-
-.header-entry {
-    align-self: stretch;
-    display: flex;
-    font-size: 2rem;
-    line-height: 1;
-    text-align: center;
-    color: #000000;
-    text-decoration: none;
-    padding: 1vw 2vw 1vw 2vw;
-    margin: 0px 0px 0px 0px;
-}
-
-.active {
-    border-bottom: 5px solid rgb(0, 110, 255);
-}
-
-.header-entry:hover {
-    border-bottom: 5px solid rgb(0, 110, 255);
-    cursor: pointer;
-}  

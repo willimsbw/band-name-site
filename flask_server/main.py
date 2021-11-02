@@ -1,5 +1,6 @@
 import random
 from flask import Flask, json, redirect, render_template, request, url_for, make_response, jsonify
+from sqlalchemy.sql.expression import true
 import database_methods
 
 app = Flask(__name__)
@@ -13,17 +14,28 @@ def serve_app():
 def make_name():
     sent_data = request.get_json()
     number_of_words = sent_data.get("numberOfWords")
+    if number_of_words < 3:
+        no_duplicates = True
+    else:
+        no_duplicates = False
     word_collection = []
     while len(word_collection) < number_of_words:
-        if(len(word_collection) >= 1):
-            word_collection.append(database_methods.get_random_word(False))
+        if len(word_collection) > 0:
+            new_word = database_methods.get_random_word(False)
+            while new_word in word_collection:
+                new_word = database_methods.get_random_word(False)
+            word_collection.append(new_word)
         else:
             word_collection.append(database_methods.get_random_word(True))
 
-    response_body = {
-        "bandName": " ".join(word_collection)
-    }
 
+    band_name = " ".join(word_collection)
+    if random.randint(1, 20) == 1:
+        band_name = band_name + "!"
+
+    response_body = {
+        "bandName": band_name
+    }
     print("returning {}".format(response_body))
     return make_response(jsonify(response_body), 200)
 
@@ -36,10 +48,12 @@ def add_word():
     input_second = sent_data.get('second')
     successful_add = database_methods.add_word(input_word, input_first, input_second)
     
-    if successful_add:
+    if successful_add["success"]:
         response_body = {
             "addedWord": input_word,
             "addedFirst": input_first,
+            "addedSecond": input_second,
+            "addedId": successful_add["id"],
             "message": "Successfully added word"
         }
 
@@ -51,7 +65,7 @@ def add_word():
 @app.route("/getAllWords", methods=["POST"])
 def view_words():
     word_objects = database_methods.get_all_words()
-    word_list = []
+    words_list = []
     for word in word_objects:
         word_map = {
             "word": word.word,
@@ -59,9 +73,9 @@ def view_words():
             "second": word.second,
             "id": word.id
         }
-        word_list.append(word_map)
+        words_list.append(word_map)
 
-    return make_response(jsonify(word_list), 200)
+    return make_response(jsonify(words_list), 200)
     
 
 

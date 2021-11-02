@@ -24,8 +24,9 @@ def add_word(word_string, first=True, second=True):
         session.flush() 
         success=False
     finally:
+        dict = {"id": word_to_add.id, "success": success}
         session.close()
-        return success
+        return dict
 
 
 def get_all_words():
@@ -38,9 +39,9 @@ def get_all_words():
 def get_random_word(is_first):
     session = initiate_session()
     if is_first:
-        word = session.query(Words).where(Words.second==True).order_by(func.random()).first().word
-    else:
         word = session.query(Words).where(Words.first==True).order_by(func.random()).first().word
+    else:
+        word = session.query(Words).where(Words.second==True).order_by(func.random()).first().word
     session.close()
     return word
 

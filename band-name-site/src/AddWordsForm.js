@@ -3,40 +3,17 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import LoadingButton from '@mui/lab/LoadingButton';
 import AddIcon from '@mui/icons-material/Add';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import './AddWordsForm.css';
 
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }  
-
-class AddWordsForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            submitting: false,
-            word: "",
-        };
-        this.handleClick = this.handleClick.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-        
-    handleClick(e) {
-        e.preventDefault();
-        this.setState({submitting: true}, () => {
-            sleep(3000).then(() => { 
-                this.setState({submitting: false}); 
-                this.setState({word: ""});
-            });    
-        });
+export default function AddWordsForm(props) {
+    const validateWordInput = () => {
+        let errorMessage = props.word ? "" : "this field is required";
     }
 
-    handleChange(e) {
-        this.setState({word: e.target.value});
-    }
-
-    render() { 
-      return (
+    return (
         <Box
             component="form"
             sx={{
@@ -51,24 +28,45 @@ class AddWordsForm extends React.Component {
                 required
                 id="outlined-required"
                 label="Add a word"
-                value={this.state.word}
-                onChange={this.handleChange}
-                disabled={this.state.submitting}
-            />
+                value={props.word}
+                onChange={props.onWordChange}
+                disabled={props.submitting}
+                error={props.wordFieldError}
+                helperText={props.wordFieldHelperText}
+            />            
             </div>
+            <FormControlLabel 
+                disabled={props.submitting} 
+                id="first-checkbox" 
+                control={
+                    <Checkbox 
+                        checked={props.first}
+                        onChange={props.onFirstchange} 
+                    />
+                } 
+                label="Can be first" 
+            />
+            <FormControlLabel 
+                disabled={props.submitting} 
+                id="second-checkbox" 
+                control={
+                    <Checkbox 
+                        checked={props.second}
+                        onChange={props.onSecondChange} 
+                    />
+                } 
+                label="Can be second" 
+            />
             <LoadingButton
                 color="primary"
-                onClick={this.handleClick}
-                loading={this.state.submitting}
+                onClick={props.onSubmit}
+                loading={props.submitting}
                 loadingPosition="start"
                 startIcon={<AddIcon />}
                 variant="contained"
             >
                 Add
-            </LoadingButton>
+            </LoadingButton>            
         </Box>
-      );
-    }
+    );
 }
- 
-export default AddWordsForm;

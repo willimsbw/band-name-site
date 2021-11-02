@@ -11,12 +11,21 @@ def initiate_session():
     return DBSession()
 
 
-def add_word(word_string):
+def add_word(word_string, first=True, second=True):
     session = initiate_session()
-    word_to_add = Words(word=word_string)
-    session.add(word_to_add)
-    session.commit()
-    session.close()
+    word_to_add = Words(word=word_string, first=first, second=second)
+    success=True
+    try:
+        session.add(word_to_add)
+        session.commit()
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.flush() 
+        success=False
+    finally:
+        session.close()
+        return success
 
 
 def get_all_words():
@@ -26,9 +35,12 @@ def get_all_words():
     return all_words
 
 
-def get_random_word():
+def get_random_word(is_first):
     session = initiate_session()
-    word = session.query(Words).order_by(func.random()).first().word
+    if is_first:
+        word = session.query(Words).where(Words.second==True).order_by(func.random()).first().word
+    else:
+        word = session.query(Words).where(Words.first==True).order_by(func.random()).first().word
     session.close()
     return word
 
@@ -36,6 +48,35 @@ def get_random_word():
 def remove_word(input_id):
     session = initiate_session()
     word = session.query(Words).filter_by(id=input_id).first()
-    session.delete(word)
-    session.commit()
-    session.close()
+    success=True
+    try:
+        session.delete(word)
+        session.commit()
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.flush() 
+        success=False
+    finally:
+        session.close()
+        return success
+
+
+def update_word(word_map):
+    session = initiate_session()
+    success=True
+    try:
+        session.query(Words).where(Words.id == word_map.get("id")).update({
+            Words.word: word_map.get("word"),
+            Words.first: word_map.get("first"),
+            Words.second: word_map.get("second")
+        })
+        session.commit()
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.flush()
+        success=False
+    finally:
+        session.close()
+        return success

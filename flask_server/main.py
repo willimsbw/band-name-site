@@ -24,6 +24,7 @@ def make_name():
         "bandName": " ".join(word_collection)
     }
 
+    print("returning {}".format(response_body))
     return make_response(jsonify(response_body), 200)
 
 
@@ -55,7 +56,8 @@ def view_words():
         word_map = {
             "word": word.word,
             "first": word.first,
-            "second": word.second
+            "second": word.second,
+            "id": word.id
         }
         word_list.append(word_map)
 

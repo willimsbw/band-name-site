@@ -2,11 +2,23 @@ import { DataGrid, GridToolbar, GridActionsCellItem } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/DeleteOutline"
 import "./ManageWordsTable.css";
 import React from 'react';
+import axios from "axios";
 
-export default function Table(props) {
+export default function Table() {
   const [editRowsModel, setEditRowsModel] = React.useState({});
-  const [rows, setRows] = React.useState(props.words);
+  const [rows, setRows] = React.useState(loadTable);
+  const [loading, setLoading] = React.useState(true);
 
+  // Todo: fetches data but doesn't load anything
+  async function loadTable() {
+    const response = await axios.post(`http://0.0.0.0:5000/getAllWords`);
+    const wordMaps = response.data
+    const rowList = wordMaps.map(word => {
+      return {id: word.id, field: word.word, firstAble: word.first, secondAble: word.second};
+    })
+    setRows(rowList);
+    setLoading(false)
+  }
 
   const handleDelete = React.useCallback(
     (id) => () => {

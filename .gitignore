@@ -104,3 +104,13 @@ venv.bak/
 .mypy_cache/
 
 .db
+
+#vscode stuff
+.vscode
+
+#intellij stuff
+.idea
+
+# Build files
+flask_server/static/react
+flask_server/templates/index.html

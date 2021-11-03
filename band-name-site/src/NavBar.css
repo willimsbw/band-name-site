@@ -1,0 +1,7 @@
+.nav-row {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    font-size: 1vw;
+}

@@ -9,17 +9,6 @@ A simple tool that will generate you a super-hip band name!
 * **Launch the website by executing main.py in the flask_server directory `python ./flask_server/main.py`** 
 
 # How to use
-<<<<<<< HEAD
-* You can initialize and fill a sqqlite databse called words.db by executing fill_db.py. After executing this once, you 
-  will only need to execute it again if you need to re-initialize the database
-* Launch the website by executing server.py
-* Press "Get a Name" to get an awesome indie band name
-* Use the "Manage" page to see all of the current words in the database, delete any, and add additional words
-
-# Required Packages
-* SqlAlchemy
-* Flask
-=======
 * Input the number of words you want (default is 2) and press "Get a Name" to get an awesome indie band name
 * Use the "manage" button on the bottom navbar to see/edit/delete all of the current words in the database or add additional words
 
@@ -32,4 +21,3 @@ A simple tool that will generate you a super-hip band name!
 * Band-name-site:
   * All dependencies noted in package.json. 
     * Can be installed by navigating to the ./band-name-site directory and running `npm install` or `yarn install` (if you're using yarn)
->>>>>>> react
